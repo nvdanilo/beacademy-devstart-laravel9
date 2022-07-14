@@ -5,11 +5,12 @@
     <table class="table table-dark table-hover table-bordered table-striped">
         <thead class="text-center">
             <tr>
-                <th scope="col">#ID</th>
-                <th scope="col">NOME</th>
-                <th scope="col">EMAIL</th>
-                <th scope="col">DATA DE CADASTRO</th>
-                <th scope="col">AÇÕES</th>
+                <th scope="col">#Id</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Email</th>
+                <th scope="col">Data de Cadastro</th>
+                <th scope="col">Editar</th>
+                <th scope="col">Deletar</th>
             </tr>
         </thead>
         <tbody class="text-center">
@@ -20,7 +21,13 @@
                 <td>{{ date("H:m | d/m/Y", strtotime($user->created_at)) }}</td>
                 <td>
                     <a href="{{ route('users.edit', $user->id) }}" class="btn btn-warning btn-sm">Editar</a>
-                    <a href="" class="btn btn-danger btn-sm">Excluir</a>
+                </td>
+                <td>
+                    <form action="{{ route('users.destroy', $user->id) }}" method="POST">
+                        @method("DELETE")
+                        @csrf
+                        <button type="submit" class="btn btn-danger btn-sm">Deletar</button>
+                    </form>
                 </td>
             </tr>
         </tbody>
