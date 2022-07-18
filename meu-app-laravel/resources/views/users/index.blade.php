@@ -4,6 +4,7 @@
 
     <h1 class="text-center">Listagem de Usuários</h1>
     <a href="{{ route('users.create') }}" class="btn btn-primary mb-3 text-end">Novo Usuário</a>
+
     <table class="table table-dark table-hover table-bordered table-striped">
         <thead class="text-center">
             <tr>
