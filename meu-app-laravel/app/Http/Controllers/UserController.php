@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Http\Requests\StoreUpdateUserFormRequest;
+use App\Models\Team;
 
 class UserController extends Controller
 {
+    protected $model;
 
     public function __construct(User $user)
     {
@@ -18,20 +20,18 @@ class UserController extends Controller
     public function index()
     {
         $users = User::paginate(5);
-        
+
         return view("users.index", compact("users"));
     }
 
     public function show($id)
     {
-        // $user = User::where("id", $id)->first();
-        if (!$user = User::find($id)) {
+
+        if (!$user = User::findOrFail($id)) {
             return redirect()->route("users.index");
         }
         
-        $title = "Usuário {$user->name}";
-
-        return view("users.show", compact("user", "title"));
+        return view("users.show", compact("user"));
     }
 
 
