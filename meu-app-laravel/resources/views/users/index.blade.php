@@ -9,11 +9,12 @@
         <thead class="text-center">
             <tr>
                 <th>Foto</th>
-                <th scope="col">#ID</th>
-                <th scope="col">NOME</th>
-                <th scope="col">EMAIL</th>
-                <th scope="col">DATA DE CADASTRO</th>
-                <th scope="col">AÇÕES</th>
+                <th scope="col">#Id</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Email</th>
+                <th scope="col">Postagens</th>
+                <th scope="col">Data de Cadastro</th>
+                <th scope="col">Ações</th>
             </tr>
         </thead>
         <tbody class="text-center">
@@ -27,6 +28,9 @@
                     <th scope="row">{{ $user->id }}</th>
                     <td>{{ $user->name }}</td>
                     <td>{{ $user->email }}</td>
+                    <td>
+                        <a href="{{ route('posts.show', $user->id) }}" class="btn btn-primary btn-sm">Postagens - {{ $user->posts->count() }}</a>
+                    </td>
                     <td>{{ date("H:m | d/m/Y", strtotime($user->created_at)) }}</td>
                     <td>
                         <a href="{{ route('users.show', $user->id) }}" class="btn btn-primary btn-sm">Visualizar</a>
