@@ -3,7 +3,23 @@
 @section("body")
 
     <h1 class="text-center">Listagem de Usuários</h1>
-    <a href="{{ route('users.create') }}" class="btn btn-primary mb-3 text-end">Novo Usuário</a>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm mt-2 mb-5">
+                <a href="{{ route('users.create') }}" class="btn btn-primary mb-3 text-end">Novo Usuário</a>
+            </div>
+            <div class="col-sm mt-2 mb-5">
+                <form action="{{ route('users.index') }}" method="GET">
+                    <div class="input-group">
+                        <input type="search" class="form-control rounded" name="search" />
+                        <button type="submit" class="btn btn-dark">Pesquisar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
 
     <table class="table table-dark table-hover table-bordered table-striped">
         <thead class="text-center">
